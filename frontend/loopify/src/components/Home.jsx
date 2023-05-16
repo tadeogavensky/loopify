@@ -32,7 +32,7 @@ const product = {
     "The Little Martin LX1: small in size, big in tone. Ideal for travel, practice, and casual playing. Includes sustainable wood parts.",
 };
 
-export const Main = () => {
+export const Home = () => {
   return (
     <div className="px-12">
       <Featured />
@@ -78,7 +78,7 @@ const Brands = () => {
 
 const Featured = () => {
   return (
-    <div className="flex items-center justify-center  2xl:justify-around flex-wrap my-12 space-x-12 space-y-12">
+    <div className="flex items-center justify-center 2xl:justify-around flex-wrap my-12 space-x-6 space-y-12">
       <div className="text-left w-full md:w-[500px]">
         <h1 className="text-[40px] text-left md:text-[60px] font-bold">
           Fullfilling <span className="text-[#FF753A]">Dreams</span> With
@@ -91,7 +91,7 @@ const Featured = () => {
         </p>
       </div>
 
-      <div className="w-[400px] bg-gradient-to-l  from-[#FF753A] rounded-md justify-center items-center shadow-lg hidden sm:flex">
+      <div className="w-[550px] bg-gradient-to-l  from-[#FF753A] rounded-md justify-center items-center shadow-lg hidden sm:flex">
         <img src={arrow} alt="" className="relative bottom-20 rotate-45" />
         <img src={ed} alt="" className="object-cover" />
       </div>
@@ -176,7 +176,7 @@ const Incentive = (props) => {
     <div className="flex flex-col items-center">
       {props.icon}
       <p className="text-md font-semibold my-2 ">{props.title}</p>
-      <p className="text-sm text-center">{props.text}</p>
+      <p className="text-sm text-center px-6">{props.text}</p>
     </div>
   );
 };

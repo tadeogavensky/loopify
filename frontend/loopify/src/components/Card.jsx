@@ -24,6 +24,7 @@ export const Card = (props) => {
       "The Little Martin LX1: small in size, big in tone. Ideal for travel, practice, and casual playing. Includes sustainable wood parts.",
     long_description:
       "While the Little Martin is our smallest guitar, it is very big on tone, quality and versatility. The LX1 model features a solid spruce top and mahogany high-pressure laminate HPL back and sides. It’s ideal for travel, student practice or for just playing around the house or campfire. This model includes sustainable wood certified parts. See specifications for details.",
+      rating:3.5
   };
 
   const stock = true;
@@ -60,7 +61,7 @@ export const Card = (props) => {
               ${props.product.price}
             </p>
 
-            <button className="bg-[#FF753A] shadow-md hover:bg-[#C55E25] transition all duration-300 font-medium text-white text-[12px] px-8 py-2 rounded-full uppercase">
+            <button className="bg-[#FF753A] shadow-md hover:bg-[#C55E25] transition all duration-300 font-medium text-white text-[12px] px-8 py-2 rounded-full">
               Add to basket
             </button>
           </div>

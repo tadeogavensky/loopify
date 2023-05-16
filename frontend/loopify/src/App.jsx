@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { Navbar } from "./components/Navbar";
-import { Main } from "./components/Main";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Home } from "./components/Home";
+import { Login } from "./components/Login";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 function App() {
   return (
     <>
       <Router>
         <div className="worksans-regular">
           <Navbar />
-          <Main />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
         </div>
       </Router>
     </>
