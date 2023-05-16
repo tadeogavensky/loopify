@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: roboto-regular;
+  src: url("./assets/fonts/Roboto/Roboto-Regular.ttf");
+}
+
+.roboto-regular{
+  font-family: roboto-regular;
+}
+
+@font-face {
+  font-family: worksans-regular;
+  src: url("./assets/fonts/worksans/WorkSans-Regular.ttf");
+}
+
+.worksans-regular{
+  font-family: worksans-regular;
+}
+
+@font-face {
+  font-family: worksans-bold;
+  src: url("./assets/fonts/worksans/WorkSans-Bold.ttf");
+}
+
+.worksans-bold{
+  font-family: worksans-bold;
+}
+
+@font-face {
+  font-family: worksans-semibold;
+  src: url("./assets/fonts/worksans/WorkSans-SemiBold.ttf");
+}
+
+.worksans-semibold{
+  font-family: worksans-semibold;
+}
