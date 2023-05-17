@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 
 export const Login = () => {
   return (
-    <div className="flex min-h-[860px] flex-col  bg-white justify-around">
-      <div className="flex min-h-full flex-1 flex-col items-center mt-16 px-6 py-12 lg:px-8">
+    <div className="flex  flex-col  bg-white justify-around">
+      <div className="flex min-h-full flex-1 flex-col items-center px-6 py-12 lg:px-8">
         <Link to={"/"}>
-          <h1 className="text-black text-[30px] uppercase mr-7 sm:mr-0 worksans-bold">
+          <h1 className="text-[#FF753A] text-[30px] uppercase mr-7 sm:mr-0 worksans-bold">
             Loopi
-            <span className="text-[#FF753A]">fy</span>
+            <span className="text-[#00BFFF]">fy</span>
           </h1>
         </Link>
 
-        <p className="text-2xl worksans-bold mt-10 ">Sign in to your account</p>
+        <p className="text-lg sm:text-2xl worksans-regular mt-10 border-b-[#FF753A] border-b-4 pb-2 ">
+          Sign in to your account
+        </p>
 
         <div className="mt-10 sm:mx-auto sm:w-full w-full sm:max-w-sm">
           <form action="" className="space-y-6">
@@ -26,11 +28,11 @@ export const Login = () => {
             </div>
 
             <div className="flex flex-col">
-              <div className="flex items-center justify-between">
-                <label>Password</label>{" "}
+              <div className="flex items-center justify-between flex-nowrap">
+                <label className="flex-1">Password</label>
                 <Link
                   to={"/forgot-password"}
-                  className="text-indigo-600 hover:text-indigo-500"
+                  className="flex-2 text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?
                 </Link>
@@ -51,7 +53,7 @@ export const Login = () => {
               to="/signup"
               className="font-semibold text-indigo-600 hover:text-indigo-500"
             >
-              Tune your world now!
+              Join and tune your world now!
             </Link>
           </div>
         </div>
