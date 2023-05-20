@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import DoneIcon from "@mui/icons-material/Done";
 
 export const Registration = () => {
+  const [checkPassword, setCheckPassword] = useState([
+    { text: "Minimum 8 characters", isValid: false },
+    { text: "Contains at least one uppercase letter", isValid: false },
+    { text: "Contains at least one number", isValid: false },
+  ]);
+
+  const [password, setPassword] = useState("");
+
+  const [confirmPassword, setConfirmPassword] = useState(false);
+
+  const validatePassword = (password) => {
+    setCheckPassword((prevState) => {
+      const newState = [...prevState];
+
+      newState[0].isValid = password.length >= 8;
+
+      newState[1].isValid = /[A-Z]/.test(password);
+
+      newState[2].isValid = /\d/.test(password);
+
+      return newState;
+    });
+  };
+
+  const validateConfirmPassword = (pass) => {
+    pass === password ? setConfirmPassword(true) : setConfirmPassword(false);
+  };
+
   return (
     <div className="flex  flex-col  bg-white justify-around">
       <div className="flex min-h-full flex-1 flex-col items-center px-6 py-12 lg:px-8">
@@ -56,24 +84,28 @@ export const Registration = () => {
               <input
                 type="password"
                 className="px-2 py-1.5 border-black border-2 rounded-md"
+                onChange={(e) => {
+                  validatePassword(e.target.value);
+                  setPassword(e.target.value);
+                }}
               />
-              <div className="mt-2"> 
+              <div className="mt-2">
                 <ul>
-                  <li>
-                    <DoneIcon sx={{color:"#FF753A"}} />
-                  </li>
-                  <li>
-                    <DoneIcon sx={{color:"#FF753A"}} />
-                  </li>
-                  <li>
-                    <DoneIcon sx={{color:"#FF753A"}} />
-                  </li>
-                  <li>
-                    <DoneIcon sx={{color:"#FF753A"}} />
-                  </li>
-                  <li>
-                    <DoneIcon sx={{color:"#FF753A"}} />
-                  </li>
+                  {checkPassword.map((password, index) => {
+                    console.log("password :>> ", password);
+                    return (
+                      <li key={index} className="flex items-center gap-2">
+                        {password.isValid ? (
+                          <DoneIcon sx={{ color: "green" }} />
+                        ) : (
+                          <DoneIcon sx={{ color: "red" }} />
+                        )}
+                        <p className={password.isValid ? "" : "text-red-500"}>
+                          {password.text}
+                        </p>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
@@ -83,7 +115,11 @@ export const Registration = () => {
               <input
                 type="password"
                 className="px-2 py-1.5 border-black border-2 rounded-md"
+                onChange={(e) => {
+                  validateConfirmPassword(e.target.value);
+                }}
               />
+              {!confirmPassword && <p className="mt-2">Passwords do not match</p>}
             </div>
 
             <button className="w-full bg-[#FF753A] shadow-md hover:bg-[#FF8C42]  transition all duration-300 font-medium text-white text-sm px-8 py-2 rounded-md">
