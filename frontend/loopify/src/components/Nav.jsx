@@ -10,9 +10,9 @@ import {
 import { Link } from "react-router-dom";
 import { SubHeader } from "./SubHeader";
 
-import logo from "../assets/images/logo.png"
+import logo from "../assets/images/logo.png";
 
-export const Navbar = () => {
+export const Nav = () => {
   const [userLogged, setUserLogged] = useState(false);
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,31 +28,27 @@ export const Navbar = () => {
     setMenuOpacity(0);
   };
   return (
-    <div className="flex flex-col  bg-[#252525] py-6 space-y-6 ">
-      <nav className="flex flex-row sm:justify-around justify-between items-center flex-wrap">
+    <div className=" bg-[#252525] py-6 space-y-6">
+      <nav className="flex flex-row items-center justify-between sm:justify-around flex-wrap mx-8">
         <button
-          className="text-white md:hidden ml-8"
+          className="text-white md:hidden"
           onClick={() => {
             showMenu();
           }}
         >
-          <FontAwesomeIcon icon={faBars} className="text-[40px]" />
+          <FontAwesomeIcon icon={faBars} className="text-[20px]" />
         </button>
 
-        <Link to={"/"} className="flex items-center md:gap-3">
-          <h1 className="text-[#F4F0EC] text-[30px] uppercase mr-7 sm:mr-0 worksans-bold">
-            Loopi
-            <span className="text-[#FF753A]">fy</span>
-          </h1>
-          <div className="w-10 pr-4">
+        <Link to={"/"}>
+          <div className="w-10">
             <img src={logo} alt="" className="w-full object-cover" />
           </div>
         </Link>
 
-        <form action="" className=" items-center w-1/2 md:w-1/3 relative hidden sm:flex">
+        <form action="" className=" items-center w-1/2 relative hidden sm:flex">
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search for a product..."
             className="w-full outline-none px-4 py-3 rounded-md  "
           />
           <button
@@ -62,7 +58,7 @@ export const Navbar = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} className="text-[26px]" />
           </button>
         </form>
-
+        
         {userLogged ? (
           <div className="md:flex hidden items-center space-x-12 text-white font-2xl">
             <Link to={"/account"}>
@@ -93,7 +89,7 @@ export const Navbar = () => {
           <div className="md:flex hidden  items-center space-x-8">
             <Link
               to={"/login"}
-              className="hover:text-[#FF753A] text-lg md:ml-3 text-white transition-all duration-200 ease-in-out"
+              className="hover:text-[#FF753A] text-lg text-white transition-all duration-200 ease-in-out"
             >
               Sign in
             </Link>
@@ -127,6 +123,4 @@ export const Navbar = () => {
   );
 };
 
-const BurgerMenu = () => {
-  return <div></div>;
-};
+    
