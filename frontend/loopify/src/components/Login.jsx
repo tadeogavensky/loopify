@@ -7,7 +7,7 @@ export const Login = () => {
     <div className="flex  flex-col  bg-white justify-around">
       <div className="flex min-h-full flex-1 flex-col items-center px-6 py-12 lg:px-8">
         <Link to={"/"}>
-          <h1 className="text-[#FF753A] text-[30px] uppercase sm:mr-0 worksans-bold">
+          <h1 className="text-[#FF753A] text-[30px] uppercase worksans-bold">
             Loopi
             <span className="text-[#00BFFF]">fy</span>
           </h1>

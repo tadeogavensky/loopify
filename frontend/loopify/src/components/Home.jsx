@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Carousel } from "react-responsive-carousel";
 
@@ -20,7 +20,17 @@ import lx1 from "../assets/images/lx1.png";
 import ed from "../assets/images/ed.png";
 
 import arrow from "../assets/images/Arrow_22.svg";
+
+import visa from "../assets/images/payments/visa.svg";
+import applepay from "../assets/images/payments/apple-pay.svg";
+import googlepay from "../assets/images/payments/google-pay.svg";
+import amex from "../assets/images/payments/amex.svg";
+import amazon from "../assets/images/payments/amazon.svg";
+
+const paymentImages = [visa, applepay, googlepay, amex, amazon];
+
 import { Card } from "./Card";
+import { OrangeBorder } from "./OrangeBorder";
 
 const product = {
   id: 1,
@@ -39,6 +49,7 @@ export const Home = () => {
       <Brands />
       <NewProducts />
       <Incentives />
+      <Payments />
     </div>
   );
 };
@@ -104,9 +115,7 @@ const NewProducts = () => {
   return (
     <div className="mb-12">
       <div className="flex flex-col items-center my-8">
-        <span className=" border-t-[6px] bordert border-[#E7613E] text-white   cursor-default">
-          aaaaaaaaaaa
-        </span>
+        <OrangeBorder />
         <h1 className="worksans-bold text-center text-2xl">New Products</h1>
       </div>
       <div className="relative">
@@ -132,15 +141,19 @@ const NewProducts = () => {
 const Incentives = () => {
   return (
     <div>
-      <div className="flex flex-col items-center my-8">
-        <h1 className="worksans-bold text-center text-2xl mb-12">
+      <div className="flex flex-col items-center my-16">
+        <h1 className="worksans-bold text-center text-2xl mb-6">
           We are your gateway to the world of music
         </h1>
 
         <div className="flex flex-row flex-wrap items-baseline space-y-4">
           <div className="sm:flex-1 flex-grow">
             <Incentive
-              icon={<LocalShippingOutlinedIcon sx={{ fontSize: "2rem", color: "#" }} />}
+              icon={
+                <LocalShippingOutlinedIcon
+                  sx={{ fontSize: "2rem", color: "#" }}
+                />
+              }
               title={"Free shipping"}
               text={
                 "Experience the ultimate convenience with our exclusive offer of free shipping on all orders."
@@ -175,8 +188,31 @@ const Incentive = (props) => {
   return (
     <div className="flex flex-col items-center">
       {props.icon}
-      <p className="text-md font-semibold my-2 ">{props.title}</p>
-      <p className="text-sm text-center px-6">{props.text}</p>
+      <p className="text-xl font-semibold my-2 ">{props.title}</p>
+      <p className="text-[16px] text-center px-6">{props.text}</p>
+    </div>
+  );
+};
+
+const Payments = () => {
+  return (
+    <div className="flex flex-col items-center mt-16">
+      <OrangeBorder />
+      <div className="flex flex-col xl:flex-row xl:justify-center items-center gap-4 xl:gap-8">
+        <p className="uppercase text-center text-[18px]">
+          100% Secure Payments
+        </p>
+
+        <div className="flex flex-row flex-wrap gap-5 justify-center">
+          {paymentImages.map((img) => {
+            return (
+              <div className=" w-20 sm:w-14 gap-5 flex flex-row items-center">
+                <img src={img} alt="" className="w-full object-cover" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

@@ -40,11 +40,11 @@ export const Navbar = () => {
         </button>
 
         <Link to={"/"} className="flex items-center md:gap-3">
-          <h1 className="text-[#F4F0EC] text-[30px] uppercase mr-7 sm:mr-0 worksans-bold">
+          <h1 className="text-[#F4F0EC] text-[30px] uppercase mr-2 sm:mr-0 worksans-bold">
             Loopi
             <span className="text-[#FF753A]">fy</span>
           </h1>
-          <div className="w-10 pr-4">
+          <div className="sm:w-14 w-12 pr-4">
             <img src={logo} alt="" className="w-full object-cover" />
           </div>
         </Link>
