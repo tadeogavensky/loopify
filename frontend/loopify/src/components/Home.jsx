@@ -31,6 +31,7 @@ const paymentImages = [visa, applepay, googlepay, amex, amazon];
 
 import { Card } from "./Card";
 import { OrangeBorder } from "./OrangeBorder";
+import { Footer } from "./Footer";
 
 const product = {
   id: 1,
@@ -50,6 +51,7 @@ export const Home = () => {
       <NewProducts />
       <Incentives />
       <Payments />
+      <Footer/>
     </div>
   );
 };
@@ -206,7 +208,7 @@ const Payments = () => {
         <div className="flex flex-row flex-wrap gap-5 justify-center">
           {paymentImages.map((img) => {
             return (
-              <div className=" w-20 sm:w-14 gap-5 flex flex-row items-center">
+              <div className=" w-16 sm:w-14 gap-5 flex flex-row items-center">
                 <img src={img} alt="" className="w-full object-cover" />
               </div>
             );
