@@ -88,6 +88,7 @@ const FooterButton = ({ name, selectedState, id }) => {
     return id;
   };
 
+
   return (
     <button
       className="uppercase py-4 flex items-center justify-between w-full border-t-[1px] border-gray-300"
@@ -136,14 +137,14 @@ const ContactLinks = () => {
   return (
     <div className="mt-4 flex flex-col items-start gap-6">
       <Link className="flex items-center gap-3">
-        <div className="w-8">
+        <div className="w-8 md:w-6">
           <img src={chatsvg} alt="" className="w-full object-cover" />
         </div>
         <p>Chat with us</p>
       </Link>
       <Link className="flex flex-col">
         <div className="flex items-center gap-3">
-          <div className="w-8">
+          <div className="w-8 md:w-6">
             <img src={callsvg} alt="" className="w-full object-cover" />
           </div>
           <p>Loopify Club</p>
@@ -157,7 +158,7 @@ const ContactLinks = () => {
 
       <Link className="flex flex-col">
         <div className="flex items-center gap-3">
-          <div className="w-8">
+          <div className="w-8 md:w-6">
             <img src={chatsvg} alt="" className="w-full object-cover" />
           </div>
 
@@ -175,7 +176,7 @@ const ContactLinks = () => {
 
       <Link className="flex flex-col">
         <div className="flex items-center gap-3">
-          <div className="w-8">
+          <div className="w-8 md:w-6">
             <img src={callsvg} alt="" className="w-full object-cover" />
           </div>
           <div className="flex flex-col">
@@ -187,7 +188,7 @@ const ContactLinks = () => {
 
       <Link className="flex flex-col">
         <div className="flex items-center gap-3">
-          <div className="w-8">
+          <div className="w-8 md:w-6">
             <img src={infocircle} alt="" className="w-full object-cover" />
           </div>
           <div className="flex flex-col">

@@ -16,9 +16,6 @@ export const SubHeader = () => {
         Accessories
       </Link>
       <Link to={`/products/${product.type}`} className="link-item">
-        Repairs
-      </Link>
-      <Link to={`/products/${product.type}`} className="link-item">
         Vinyls
       </Link>
       <Link to={`/products/${product.type}`} className="link-item">

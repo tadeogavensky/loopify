@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,37 +6,32 @@ import {
   faMagnifyingGlass,
   faBars,
   faBagShopping,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { SubHeader } from "./SubHeader";
 
-import logo from "../assets/images/logo.png"
+import logo from "../assets/images/logo.png";
 
 export const Navbar = () => {
   const [userLogged, setUserLogged] = useState(false);
 
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [menuOpacity, setMenuOpacity] = useState(0);
+  const [showSidebar, setShowSidebar] = useState(false);
 
-  const showMenu = () => {
-    setMenuOpen(true);
-    setMenuOpacity(1);
+  const toggle = () => {
+    setShowSidebar(!showSidebar);
+    console.log("showSidebar :>> ", showSidebar);
   };
 
-  const hideMenu = () => {
-    setMenuOpen(false);
-    setMenuOpacity(0);
-  };
   return (
     <div className="flex flex-col  bg-[#252525] py-6 space-y-6 ">
       <nav className="flex flex-row sm:justify-around justify-between items-center flex-wrap">
-        <button
-          className="text-white md:hidden ml-8"
-          onClick={() => {
-            showMenu();
-          }}
-        >
-          <FontAwesomeIcon icon={faBars} className="text-[40px]" />
+        <button className="text-white md:hidden ml-8" onClick={toggle}>
+          {!showSidebar ? (
+            <FontAwesomeIcon icon={faBars} className="text-[40px]" />
+          ) : (
+            <FontAwesomeIcon icon={faXmark} className="text-[40px]" />
+          )}
         </button>
 
         <Link to={"/"} className="flex items-center md:gap-3">
@@ -49,7 +44,10 @@ export const Navbar = () => {
           </div>
         </Link>
 
-        <form action="" className=" items-center w-1/2 md:w-1/3 relative hidden sm:flex">
+        <form
+          action=""
+          className=" items-center w-1/2 md:w-1/3 relative hidden sm:flex"
+        >
           <input
             type="text"
             placeholder="Search..."
@@ -120,7 +118,7 @@ export const Navbar = () => {
           </button>
         </form>
 
-        {menuOpen && <BurgerMenu opacity={menuOpacity} onClose={hideMenu} />}
+        {showSidebar && <BurgerMenu /> }
       </nav>
       <SubHeader />
     </div>
@@ -128,5 +126,28 @@ export const Navbar = () => {
 };
 
 const BurgerMenu = () => {
-  return <div></div>;
+  return (
+    <div className="relative z-40 w-full h-full mt-6 mx-4">
+      <nav className="ml-4 flex flex-col items-start gap-8 justify-evenly text-white text-lg w-full py-12">
+        <Link to={``}>
+          Guitars
+        </Link>
+        <Link to={``}>
+          Pedals
+        </Link>
+        <Link to={``}>
+          Accessories
+        </Link>
+        <Link to={``}>
+          Vinyls
+        </Link>
+        <Link to={``}>
+          Lessons
+        </Link>
+        <Link to={``}>
+          About Us
+        </Link>
+      </nav>
+    </div>
+  );
 };
