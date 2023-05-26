@@ -45,7 +45,7 @@ const product = {
 
 export const Home = () => {
   return (
-    <div className="px-12">
+    <div className="px-6">
       <Featured />
       <Brands />
       <NewProducts />
@@ -206,10 +206,10 @@ const Payments = () => {
         </p>
 
         <div className="flex flex-row flex-wrap gap-5 justify-center">
-          {paymentImages.map((img) => {
+          {paymentImages.map((img, index) => {
             return (
-              <div className=" w-16 sm:w-14 gap-5 flex flex-row items-center">
-                <img src={img} alt="" className="w-full object-cover" />
+              <div key={index} className=" w-16 sm:w-14 gap-5 flex flex-row items-center">
+                <img src={img} alt=""  className="w-full object-cover" />
               </div>
             );
           })}
