@@ -106,7 +106,7 @@ const StoreLinks = () => {
       <Link>Guitars</Link>
       <Link>Pedals</Link>
       <Link>Accessories</Link>
-      <Link>Vynils</Link>
+      <Link>Vinyl</Link>
       <Link>Lessons</Link>
     </div>
   );

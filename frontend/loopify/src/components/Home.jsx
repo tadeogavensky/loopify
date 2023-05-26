@@ -104,7 +104,7 @@ const Featured = () => {
         </p>
       </div>
 
-      <div className="w-[550px] bg-gradient-to-l  from-[#FF753A] rounded-md justify-center items-center shadow-lg hidden sm:flex">
+      <div className="w-[350px] lg:w-[400px] bg-gradient-to-l  from-[#FF753A] rounded-md justify-center items-center shadow-lg hidden sm:flex">
         <img src={arrow} alt="" className="relative bottom-20 rotate-45" />
         <img src={ed} alt="" className="object-cover" />
       </div>

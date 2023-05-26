@@ -7,6 +7,11 @@ import {
   faBars,
   faBagShopping,
   faXmark,
+  faGuitar,
+  faHeadphonesSimple,
+  faCompactDisc,
+  faGraduationCap,
+  faSitemap,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { SubHeader } from "./SubHeader";
@@ -14,7 +19,7 @@ import { SubHeader } from "./SubHeader";
 import logo from "../assets/images/logo.png";
 
 export const Navbar = () => {
-  const [userLogged, setUserLogged] = useState(false);
+  const [userLogged, setUserLogged] = useState(true);
 
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -118,34 +123,85 @@ export const Navbar = () => {
           </button>
         </form>
 
-        {showSidebar && <BurgerMenu /> }
+        {showSidebar && <BurgerMenu userLogged={userLogged}/>}
       </nav>
       <SubHeader />
     </div>
   );
 };
 
-const BurgerMenu = () => {
+const BurgerMenu = ({userLogged}) => {
   return (
-    <div className="relative z-40 w-full h-full mt-6 mx-4">
-      <nav className="ml-4 flex flex-col items-start gap-8 justify-evenly text-white text-lg w-full py-12">
-        <Link to={``}>
-          Guitars
+    <div className="relative z-40 w-full h-full flex md:hidden">
+      <nav className="ml-4 flex flex-col items-center gap-8 justify-evenly text-white text-lg w-full py-12">
+        <div className="">
+          {userLogged ? (
+            <div className="flex items-center space-x-12 text-white font-2xl">
+              <Link to={"/account"}>
+                <button className="flex flex-row items-center space-x-3 bg-white text-black rounded-md px-4 py-2 ">
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="text-[16px] "
+                  />
+                  <h1 className="">
+                    Account
+                  </h1>
+                </button>
+              </Link>
+
+              <Link to={"/basket"}>
+              <button className="flex flex-row items-center space-x-3 bg-white text-black rounded-md px-4 py-2 ">
+                  <FontAwesomeIcon
+                    icon={faBagShopping}
+                    className="text-[16px]"
+                  />
+                  <h1 className="">
+                    Basket
+                  </h1>
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="flex items-center space-x-8">
+              <Link
+                to={"/login"}
+                className="flex flex-row items-center bg-[#FF753A] px-4 py-2 text-white rounded-md"
+              >
+                Sign in
+              </Link>
+
+              <button className="group flex flex-row items-center bg-white px-4 py-2 text-black rounded-md ">
+                <h1 className=" ">Get all-access</h1>
+              </button>
+            </div>
+          )}
+        </div>
+
+        <Link to={``} className="flex items-center justify-between w-full pr-4">
+          <p>Guitars</p>
+          <FontAwesomeIcon icon={faGuitar} />
         </Link>
-        <Link to={``}>
-          Pedals
+        <Link to={``} className="flex items-center justify-between w-full pr-4">
+          <p>Pedals</p>
+          <div className="w-4">
+            <img src={logo} alt="" className="w-full object-contain" />
+          </div>
         </Link>
-        <Link to={``}>
-          Accessories
+        <Link to={``} className="flex items-center justify-between w-full pr-4">
+          <p>Accessories</p>
+          <FontAwesomeIcon icon={faHeadphonesSimple} />
         </Link>
-        <Link to={``}>
-          Vinyls
+        <Link to={``} className="flex items-center justify-between w-full pr-4">
+          <p>Vinyls</p>
+          <FontAwesomeIcon icon={faCompactDisc} />
         </Link>
-        <Link to={``}>
-          Lessons
+        <Link to={``} className="flex items-center justify-between w-full pr-4">
+          <p>Lessons</p>
+          <FontAwesomeIcon icon={faGraduationCap} />
         </Link>
-        <Link to={``}>
-          About Us
+        <Link to={``} className="flex items-center justify-between w-full pr-4">
+          <p>About Us</p>
+          <FontAwesomeIcon icon={faSitemap} />
         </Link>
       </nav>
     </div>
