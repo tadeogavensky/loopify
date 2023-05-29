@@ -6,6 +6,10 @@ import infocircle from "../assets/images/icons/info-circle.svg";
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+
+import AppleIcon from "@mui/icons-material/Apple";
+import AdbIcon from '@mui/icons-material/Adb';
+
 import { useState } from "react";
 
 export const Footer = () => {
@@ -75,6 +79,18 @@ export const Footer = () => {
           </div>
         </footer>
       </div>
+      <div className="flex flex-col justify-center sm:items-center gap-1 mt-8">
+        <h1>DOWNLOAD LOOPIFY APP</h1>
+
+        <div className="flex items-baseline gap-6">
+          <Link>
+            <AppleIcon sx={{ fontSize: "2rem" }} />
+          </Link>
+          <Link>
+            <AdbIcon sx={{ fontSize: "2rem" }} />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
@@ -87,7 +103,6 @@ const FooterButton = ({ name, selectedState, id }) => {
     selectedState(!selected);
     return id;
   };
-
 
   return (
     <button
@@ -137,14 +152,14 @@ const ContactLinks = () => {
   return (
     <div className="mt-4 flex flex-col items-start gap-6">
       <Link className="flex items-center gap-3">
-        <div className="w-8 md:w-6">
+        <div className="w-5 md:w-6">
           <img src={chatsvg} alt="" className="w-full object-cover" />
         </div>
         <p>Chat with us</p>
       </Link>
       <Link className="flex flex-col">
         <div className="flex items-center gap-3">
-          <div className="w-8 md:w-6">
+          <div className="w-5 md:w-6">
             <img src={callsvg} alt="" className="w-full object-cover" />
           </div>
           <p>Loopify Club</p>
@@ -158,7 +173,7 @@ const ContactLinks = () => {
 
       <Link className="flex flex-col">
         <div className="flex items-center gap-3">
-          <div className="w-8 md:w-6">
+          <div className="w-5 md:w-6">
             <img src={chatsvg} alt="" className="w-full object-cover" />
           </div>
 
@@ -176,7 +191,7 @@ const ContactLinks = () => {
 
       <Link className="flex flex-col">
         <div className="flex items-center gap-3">
-          <div className="w-8 md:w-6">
+          <div className="w-5 md:w-6">
             <img src={callsvg} alt="" className="w-full object-cover" />
           </div>
           <div className="flex flex-col">
@@ -188,7 +203,7 @@ const ContactLinks = () => {
 
       <Link className="flex flex-col">
         <div className="flex items-center gap-3">
-          <div className="w-8 md:w-6">
+          <div className="w-5 md:w-6">
             <img src={infocircle} alt="" className="w-full object-cover" />
           </div>
           <div className="flex flex-col">

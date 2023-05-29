@@ -26,10 +26,21 @@ export const Navbar = () => {
   const toggle = () => {
     setShowSidebar(!showSidebar);
     console.log("showSidebar :>> ", showSidebar);
+
+    if (!showSidebar) {
+      // Disable scroll
+      document.body.classList.add("no-scroll");
+    } else {
+      // Enable scroll
+      document.body.classList.remove("no-scroll");
+    }
   };
 
   return (
-    <div className="flex flex-col  bg-[#252525] py-6 space-y-6 ">
+    <div
+      id="navbar"
+      className="fixed top-0 left-0 right-0 z-50 flex flex-col bg-[#252525] py-8 sm:py-6 space-y-6"
+    >
       <nav className="flex flex-row sm:justify-around justify-between items-center flex-wrap">
         <button className="text-white md:hidden ml-8" onClick={toggle}>
           {!showSidebar ? (
@@ -123,41 +134,38 @@ export const Navbar = () => {
           </button>
         </form>
 
-        {showSidebar && <BurgerMenu userLogged={userLogged}/>}
+        {showSidebar && <BurgerMenu userLogged={userLogged} />}
       </nav>
       <SubHeader />
     </div>
   );
 };
 
-const BurgerMenu = ({userLogged}) => {
+const BurgerMenu = ({ userLogged, showSidebar }) => {
   return (
-    <div className="relative z-40 w-full h-full flex md:hidden">
+    <div
+      className={`relative z-40 ${
+        showSidebar ? "w-0" : "w-full"
+      } h-full flex md:hidden transition-all duration-300 ease-in-out`}
+    >
       <nav className="ml-4 flex flex-col items-center gap-8 justify-evenly text-white text-lg w-full py-12">
         <div className="">
           {userLogged ? (
             <div className="flex items-center space-x-12 text-white font-2xl">
               <Link to={"/account"}>
                 <button className="flex flex-row items-center space-x-3 bg-white text-black rounded-md px-4 py-2 ">
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    className="text-[16px] "
-                  />
-                  <h1 className="">
-                    Account
-                  </h1>
+                  <FontAwesomeIcon icon={faUser} className="text-[16px] " />
+                  <h1 className="">Account</h1>
                 </button>
               </Link>
 
               <Link to={"/basket"}>
-              <button className="flex flex-row items-center space-x-3 bg-white text-black rounded-md px-4 py-2 ">
+                <button className="flex flex-row items-center space-x-3 bg-white text-black rounded-md px-4 py-2 ">
                   <FontAwesomeIcon
                     icon={faBagShopping}
                     className="text-[16px]"
                   />
-                  <h1 className="">
-                    Basket
-                  </h1>
+                  <h1 className="">Basket</h1>
                 </button>
               </Link>
             </div>

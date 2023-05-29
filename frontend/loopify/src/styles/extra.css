@@ -18,10 +18,17 @@
   width: 100%;
 }
 
-.carousel-container {
+.no-scroll {
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
 }

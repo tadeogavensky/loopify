@@ -23,7 +23,6 @@ import visa from "../assets/images/payments/visa.svg";
 import applepay from "../assets/images/payments/apple-pay.svg";
 import googlepay from "../assets/images/payments/google-pay.svg";
 import amex from "../assets/images/payments/amex.svg";
-import amazon from "../assets/images/payments/amazon.svg";
 
 import { Card } from "./Card";
 
@@ -36,7 +35,7 @@ import { Footer } from "./Footer";
 
 import swiperConfig from "../utils/swiperConfig";
 
-const paymentImages = [visa, applepay, googlepay, amex, amazon];
+const paymentImages = [visa, amex, applepay, googlepay];
 
 const brands = [
   boss,
@@ -62,9 +61,31 @@ const product = {
     "The Little Martin LX1: small in size, big in tone. Ideal for travel, practice, and casual playing. Includes sustainable wood parts.",
 };
 
+/* const categories = [
+  {
+    name: "Acoustic Guitars",
+    image: acousticGuitarImage,
+    link: "/acoustic-guitars",
+  },
+  {
+    name: "Electric Guitars",
+    image: electricGuitarImage,
+    link: "/electric-guitars",
+  },
+  { name: "Keys", image: keysImage, link: "/keys" },
+  { name: "Pedals", image: pedalsImage, link: "/pedals" },
+  { name: "Amps", image: ampsImage, link: "/amps" },
+  { name: "Mics", image: micsImage, link: "/mics" },
+  { name: "Cables", image: cablesImage, link: "/cables" },
+  { name: "Drums", image: drumsImage, link: "/drums" },
+  { name: "Accessories", image: accessoriesImage, link: "/accessories" },
+  { name: "Recordings", image: recordingsImage, link: "/recordings" },
+]; */
+
 export const Home = () => {
   return (
-    <div className="px-6">
+    <div className="px-6 pt-40">
+      <GridItems />
       <Featured />
       <Brands />
       <ProductCarousel />
@@ -75,8 +96,22 @@ export const Home = () => {
   );
 };
 
+const GridItems = () => {
+  return (
+    <div className="grid grid-cols-5 grid-rows-5 gap-4">
+   {/*    {categories.map((category, index) => (
+        <div key={index} className="relative overflow-hidden">
+          <img src={category.image} alt={category.name} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 hover:bg-opacity-70 transition-opacity">
+            <a href={category.link} className="text-white font-bold text-lg">{category.name}</a>
+          </div>
+        </div>
+      ))} */}
+    </div>
+  );
+};
+
 const Brands = () => {
-  const [controlledSwiper, setControlledSwiper] = useState(null);
   return (
     <div className="my-10">
       <div className="flex flex-col items-center my-8">
@@ -85,14 +120,15 @@ const Brands = () => {
           Associated Brands
         </h1>
       </div>
-      <Swiper
-        {...swiperConfig}
-      >
-        {brands.map((brand) => {
+      <Swiper {...swiperConfig}>
+        {brands.map((brand, index) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <button className="w-[50%] sm:w-[40%] content-none">
-                <img src={brand} className="w-full object-contain content-none" />
+                <img
+                  src={brand}
+                  className="w-full object-contain content-none"
+                />
               </button>
             </SwiperSlide>
           );
@@ -150,9 +186,9 @@ const ProductCarousel = () => {
         </div>
         <div>
           <Swiper {...swiperConfig}>
-            {latestProducts.map((product) => {
+            {latestProducts.map((product, index) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <Card product={product} />
                 </SwiperSlide>
               );
