@@ -30,7 +30,7 @@ export const Card = (props) => {
   const stock = true;
   return (
     <>
-      <div className="flex flex-col items-center w-[280px] bg-white rounded-md shadow-lg pb-4 px-[2rem]">
+      <div className="flex flex-col items-center w-[300px] bg-white rounded-md shadow-lg pb-4 px-[2rem] ml-4">
         <div className="h-[10rem] pt-2 relative text-center box-content">
           <Link to={`/product/${props.product.id}`}>
             <img

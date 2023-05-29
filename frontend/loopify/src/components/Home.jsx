@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 
-import { Carousel } from "react-responsive-carousel";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import LoyaltyOutlinedIcon from "@mui/icons-material/LoyaltyOutlined";
 import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
@@ -27,11 +23,32 @@ import googlepay from "../assets/images/payments/google-pay.svg";
 import amex from "../assets/images/payments/amex.svg";
 import amazon from "../assets/images/payments/amazon.svg";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 const paymentImages = [visa, applepay, googlepay, amex, amazon];
 
 import { Card } from "./Card";
 import { OrangeBorder } from "./OrangeBorder";
 import { Footer } from "./Footer";
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+};
 
 const product = {
   id: 1,
@@ -51,7 +68,7 @@ export const Home = () => {
       <NewProducts />
       <Incentives />
       <Payments />
-      <Footer/>
+      <Footer />
     </div>
   );
 };
@@ -113,7 +130,7 @@ const Featured = () => {
 };
 
 const NewProducts = () => {
-  const latestProducts = [];
+  const latestProducts = [product, product, product, product, product, product];
   return (
     <div className="mb-12">
       <div className="flex flex-col items-center my-8">
@@ -121,21 +138,20 @@ const NewProducts = () => {
         <h1 className="worksans-bold text-center text-2xl">New Products</h1>
       </div>
       <div className="relative">
-        <img
+        {/*  <img
           src="https://www.nespresso.com/shared_res/agility/n-components/cross-sell/texture_XL.png"
-          className="absolute sm:hidden md:right-[15%] md:top-[-2%] lg:right-[20%] lg:top-[-5%] hidden md:block"
+          className="absolute sm:hidden md:right-[15%] md:top-[-2%] lg:right-[20%] lg:top-[-5%] hidden md:block -z-30"
           alt=""
-        />
-        <div className="flex items-center justify-center flex-wrap gap-4 sm:gap-4 relative z-10">
-          {latestProducts && (
-            <>
-              <Card product={product} />
-              <Card product={product} />
-              <Card product={product} />
-            </>
-          )}
+        /> */}
+      
+          <Carousel responsive={responsive} showDots={true} containerClass="Ç">
+            {latestProducts.map((product) => {
+              return <Card product={product} />;
+            })}
+          </Carousel>
         </div>
-      </div>
+        
+   
     </div>
   );
 };
@@ -208,8 +224,11 @@ const Payments = () => {
         <div className="flex flex-row flex-wrap gap-5 justify-center">
           {paymentImages.map((img, index) => {
             return (
-              <div key={index} className=" w-16 sm:w-14 gap-5 flex flex-row items-center">
-                <img src={img} alt=""  className="w-full object-cover" />
+              <div
+                key={index}
+                className=" w-16 sm:w-14 gap-5 flex flex-row items-center"
+              >
+                <img src={img} alt="" className="w-full object-cover" />
               </div>
             );
           })}
