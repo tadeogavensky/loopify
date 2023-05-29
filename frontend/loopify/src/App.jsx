@@ -12,12 +12,14 @@ function App() {
       <Router>
         <BasketProvider>
           <div className="worksans-regular">
-            <Navbar />  
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Registration />} />
-            </Routes>
+            <Navbar />
+            <div className="mt-36">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Registration />} />
+              </Routes>
+            </div>
           </div>
         </BasketProvider>
       </Router>

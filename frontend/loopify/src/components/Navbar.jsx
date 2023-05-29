@@ -23,6 +23,10 @@ export const Navbar = () => {
 
   const [showSidebar, setShowSidebar] = useState(false);
 
+  const closeSidebar = () => {
+    setShowSidebar(false);
+  };
+
   const toggle = () => {
     setShowSidebar(!showSidebar);
     console.log("showSidebar :>> ", showSidebar);
@@ -79,7 +83,7 @@ export const Navbar = () => {
 
         {userLogged ? (
           <div className="md:flex hidden items-center space-x-12 text-white font-2xl">
-            <Link to={"/account"}>
+            <Link onClick={closeSidebar} to={"/account"}>
               <button className="flex flex-row items-center space-x-3 group ">
                 <FontAwesomeIcon
                   icon={faUser}
@@ -91,7 +95,7 @@ export const Navbar = () => {
               </button>
             </Link>
 
-            <Link to={"/basket"}>
+            <Link onClick={closeSidebar} to={"/basket"}>
               <button className="flex items-center space-x-3 group">
                 <FontAwesomeIcon
                   icon={faBagShopping}
@@ -106,6 +110,7 @@ export const Navbar = () => {
         ) : (
           <div className="md:flex hidden  items-center space-x-8">
             <Link
+              onClick={closeSidebar}
               to={"/login"}
               className="hover:text-[#FF753A] text-lg md:ml-3 text-white transition-all duration-200 ease-in-out"
             >
@@ -134,32 +139,37 @@ export const Navbar = () => {
           </button>
         </form>
 
-        {showSidebar && <BurgerMenu userLogged={userLogged} />}
+        {showSidebar && (
+          <BurgerMenu
+            userLogged={userLogged}
+            showSidebar={showSidebar}
+            closeSidebar={closeSidebar}
+          />
+        )}
       </nav>
       <SubHeader />
     </div>
   );
 };
-
-const BurgerMenu = ({ userLogged, showSidebar }) => {
+const BurgerMenu = ({ userLogged, showSidebar, closeSidebar }) => {
   return (
     <div
-      className={`relative z-40 ${
-        showSidebar ? "w-0" : "w-full"
-      } h-full flex md:hidden transition-all duration-300 ease-in-out`}
+      className={`relative z-40 
+        w-full
+      h-screen items-start flex md:hidden `}
     >
       <nav className="ml-4 flex flex-col items-center gap-8 justify-evenly text-white text-lg w-full py-12">
         <div className="">
           {userLogged ? (
             <div className="flex items-center space-x-12 text-white font-2xl">
-              <Link to={"/account"}>
+              <Link onClick={closeSidebar} to={"/account"}>
                 <button className="flex flex-row items-center space-x-3 bg-white text-black rounded-md px-4 py-2 ">
                   <FontAwesomeIcon icon={faUser} className="text-[16px] " />
                   <h1 className="">Account</h1>
                 </button>
               </Link>
 
-              <Link to={"/basket"}>
+              <Link onClick={closeSidebar} to={"/basket"}>
                 <button className="flex flex-row items-center space-x-3 bg-white text-black rounded-md px-4 py-2 ">
                   <FontAwesomeIcon
                     icon={faBagShopping}
@@ -172,6 +182,7 @@ const BurgerMenu = ({ userLogged, showSidebar }) => {
           ) : (
             <div className="flex items-center space-x-8">
               <Link
+                onClick={closeSidebar}
                 to={"/login"}
                 className="flex flex-row items-center bg-[#FF753A] px-4 py-2 text-white rounded-md"
               >
@@ -185,29 +196,53 @@ const BurgerMenu = ({ userLogged, showSidebar }) => {
           )}
         </div>
 
-        <Link to={``} className="flex items-center justify-between w-full pr-4">
+        <Link
+          onClick={closeSidebar}
+          to={``}
+          className="flex items-center justify-between w-full pr-4"
+        >
           <p>Guitars</p>
           <FontAwesomeIcon icon={faGuitar} />
         </Link>
-        <Link to={``} className="flex items-center justify-between w-full pr-4">
+        <Link
+          onClick={closeSidebar}
+          to={``}
+          className="flex items-center justify-between w-full pr-4"
+        >
           <p>Pedals</p>
           <div className="w-4">
             <img src={logo} alt="" className="w-full object-contain" />
           </div>
         </Link>
-        <Link to={``} className="flex items-center justify-between w-full pr-4">
+        <Link
+          onClick={closeSidebar}
+          to={``}
+          className="flex items-center justify-between w-full pr-4"
+        >
           <p>Accessories</p>
           <FontAwesomeIcon icon={faHeadphonesSimple} />
         </Link>
-        <Link to={``} className="flex items-center justify-between w-full pr-4">
+        <Link
+          onClick={closeSidebar}
+          to={``}
+          className="flex items-center justify-between w-full pr-4"
+        >
           <p>Vinyls</p>
           <FontAwesomeIcon icon={faCompactDisc} />
         </Link>
-        <Link to={``} className="flex items-center justify-between w-full pr-4">
+        <Link
+          onClick={closeSidebar}
+          to={``}
+          className="flex items-center justify-between w-full pr-4"
+        >
           <p>Lessons</p>
           <FontAwesomeIcon icon={faGraduationCap} />
         </Link>
-        <Link to={``} className="flex items-center justify-between w-full pr-4">
+        <Link
+          onClick={closeSidebar}
+          to={``}
+          className="flex items-center justify-between w-full pr-4"
+        >
           <p>About Us</p>
           <FontAwesomeIcon icon={faSitemap} />
         </Link>
