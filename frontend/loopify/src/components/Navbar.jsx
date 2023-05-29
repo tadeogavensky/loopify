@@ -24,7 +24,12 @@ export const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   const closeSidebar = () => {
+    if (showSidebar == true) {
+      setShowSidebar(false);
+      document.body.classList.remove("no-scroll");
+    }
     setShowSidebar(false);
+    document.body.classList.remove("no-scroll");
   };
 
   const toggle = () => {

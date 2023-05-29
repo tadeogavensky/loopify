@@ -84,7 +84,7 @@ const product = {
 
 export const Home = () => {
   return (
-    <div className="px-6">
+    <div className="px-6 mt-[30%] sm:mt-[10%]">
       <GridItems />
       <Featured />
       <Brands />

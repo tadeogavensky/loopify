@@ -13,7 +13,7 @@ function App() {
         <BasketProvider>
           <div className="worksans-regular">
             <Navbar />
-            <div className="mt-36">
+            <div className="">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
