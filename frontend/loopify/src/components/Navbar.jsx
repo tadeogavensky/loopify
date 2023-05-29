@@ -19,7 +19,7 @@ import { SubHeader } from "./SubHeader";
 import logo from "../assets/images/logo.png";
 
 export const Navbar = () => {
-  const [userLogged, setUserLogged] = useState(true);
+  const [userLogged, setUserLogged] = useState(false);
 
   const [showSidebar, setShowSidebar] = useState(false);
 

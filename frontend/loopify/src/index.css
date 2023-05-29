@@ -38,3 +38,14 @@
   font-family: worksans-semibold;
 }
 
+
+.swiper-wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

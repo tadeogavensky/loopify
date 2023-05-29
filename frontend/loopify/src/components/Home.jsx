@@ -10,45 +10,47 @@ import gibson from "../assets/images/brands/gibson.png";
 import taylor from "../assets/images/brands/taylor.png";
 import martin from "../assets/images/brands/martin.png";
 import yamaha from "../assets/images/brands/yamaha.png";
+import epiphone from "../assets/images/brands/epiphone.png";
+import ernieball from "../assets/images/brands/ernieball.png";
+import focusrite from "../assets/images/brands/focusrite.png";
+import korg from "../assets/images/brands/korg.png";
+import marshall from "../assets/images/brands/marshall.png";
 
 import lx1 from "../assets/images/lx1.png";
-
 import ed from "../assets/images/ed.png";
-
 import arrow from "../assets/images/Arrow_22.svg";
-
 import visa from "../assets/images/payments/visa.svg";
 import applepay from "../assets/images/payments/apple-pay.svg";
 import googlepay from "../assets/images/payments/google-pay.svg";
 import amex from "../assets/images/payments/amex.svg";
 import amazon from "../assets/images/payments/amazon.svg";
 
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-
-const paymentImages = [visa, applepay, googlepay, amex, amazon];
-
 import { Card } from "./Card";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Controller } from "swiper";
+import "swiper/css";
+
 import { OrangeBorder } from "./OrangeBorder";
 import { Footer } from "./Footer";
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-    slidesToSlide: 3, // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 2, // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1, // optional, default to 1.
-  },
-};
+import swiperConfig from "../utils/swiperConfig";
+
+const paymentImages = [visa, applepay, googlepay, amex, amazon];
+
+const brands = [
+  boss,
+  fender,
+  ernieball,
+  martin,
+  yamaha,
+  taylor,
+  gibson,
+  epiphone,
+  focusrite,
+  korg,
+  marshall,
+];
 
 const product = {
   id: 1,
@@ -65,7 +67,7 @@ export const Home = () => {
     <div className="px-6">
       <Featured />
       <Brands />
-      <NewProducts />
+      <ProductCarousel />
       <Incentives />
       <Payments />
       <Footer />
@@ -74,34 +76,28 @@ export const Home = () => {
 };
 
 const Brands = () => {
+  const [controlledSwiper, setControlledSwiper] = useState(null);
   return (
-    <div className="flex items-center justify-center space-x-12 my-10">
-      <button className="w-[120px] ">
-        <img src={boss} alt="" className="object-contain" />
-      </button>
-      <button className="w-[120px] ">
-        <img src={taylor} alt="" className="object-contain" />
-      </button>
-      <button className="w-[120px] ">
-        <img src={martin} alt="" className="object-contain" />
-      </button>
-      <button className="w-[120px]">
-        <img
-          src={fender}
-          alt=""
-          className="object-contain grayscale hover:grayscale-0 transition-all ease-in-out duration-300"
-        />
-      </button>
-      <button className="w-[120px] ">
-        <img src={gibson} alt="" className="object-contain" />
-      </button>
-      <button className="w-[120px] ">
-        <img
-          src={yamaha}
-          alt=""
-          className="object-contain grayscale hover:grayscale-0 transition-all ease-in-out duration-300"
-        />
-      </button>
+    <div className="my-10">
+      <div className="flex flex-col items-center my-8">
+        <OrangeBorder />
+        <h1 className="worksans-bold text-center text-2xl">
+          Associated Brands
+        </h1>
+      </div>
+      <Swiper
+        {...swiperConfig}
+      >
+        {brands.map((brand) => {
+          return (
+            <SwiperSlide>
+              <button className="w-[50%] sm:w-[40%] content-none">
+                <img src={brand} className="w-full object-contain content-none" />
+              </button>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </div>
   );
 };
@@ -122,37 +118,49 @@ const Featured = () => {
       </div>
 
       <div className="w-[350px] lg:w-[400px] bg-gradient-to-l  from-[#FF753A] rounded-md justify-center items-center shadow-lg hidden sm:flex">
-        <img src={arrow} alt="" className="relative bottom-20 rotate-45" />
-        <img src={ed} alt="" className="object-cover" />
+        <img src={arrow} className="relative bottom-20 rotate-45" />
+        <img src={ed} className="object-cover" />
       </div>
     </div>
   );
 };
 
-const NewProducts = () => {
-  const latestProducts = [product, product, product, product, product, product];
+const ProductCarousel = () => {
+  const latestProducts = [
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+    product,
+  ];
   return (
-    <div className="mb-12">
-      <div className="flex flex-col items-center my-8">
-        <OrangeBorder />
-        <h1 className="worksans-bold text-center text-2xl">New Products</h1>
-      </div>
-      <div className="relative">
-        {/*  <img
-          src="https://www.nespresso.com/shared_res/agility/n-components/cross-sell/texture_XL.png"
-          className="absolute sm:hidden md:right-[15%] md:top-[-2%] lg:right-[20%] lg:top-[-5%] hidden md:block -z-30"
-          alt=""
-        /> */}
-      
-          <Carousel responsive={responsive} showDots={true} containerClass="Ç">
-            {latestProducts.map((product) => {
-              return <Card product={product} />;
-            })}
-          </Carousel>
+    <>
+      <div className="mb-12">
+        <div className="flex flex-col items-center my-8">
+          <OrangeBorder />
+          <h1 className="worksans-bold text-center text-2xl">New Products</h1>
         </div>
-        
-   
-    </div>
+        <div>
+          <Swiper {...swiperConfig}>
+            {latestProducts.map((product) => {
+              return (
+                <SwiperSlide>
+                  <Card product={product} />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -228,7 +236,7 @@ const Payments = () => {
                 key={index}
                 className=" w-16 sm:w-14 gap-5 flex flex-row items-center"
               >
-                <img src={img} alt="" className="w-full object-cover" />
+                <img src={img} className="w-full object-cover" />
               </div>
             );
           })}
