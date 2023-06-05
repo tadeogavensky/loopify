@@ -61,31 +61,38 @@ const product = {
     "The Little Martin LX1: small in size, big in tone. Ideal for travel, practice, and casual playing. Includes sustainable wood parts.",
 };
 
-/* const categories = [
+import acoustic from "../assets/images/categories/acoustic.jpg";
+import amp from "../assets/images/categories/amp.jpg";
+import drums from "../assets/images/categories/drums.jpg";
+import electric from "../assets/images/categories/electric.jpg";
+import keys from "../assets/images/categories/keys.jpg";
+import pedal from "../assets/images/categories/pedal.jpg";
+import cables from "../assets/images/categories/cables.jpg";
+import headphones from "../assets/images/categories/headphones.jpg";
+
+const categories = [
   {
     name: "Acoustic Guitars",
-    image: acousticGuitarImage,
+    image: acoustic,
     link: "/acoustic-guitars",
   },
   {
     name: "Electric Guitars",
-    image: electricGuitarImage,
+    image: electric,
     link: "/electric-guitars",
   },
-  { name: "Keys", image: keysImage, link: "/keys" },
-  { name: "Pedals", image: pedalsImage, link: "/pedals" },
-  { name: "Amps", image: ampsImage, link: "/amps" },
-  { name: "Mics", image: micsImage, link: "/mics" },
-  { name: "Cables", image: cablesImage, link: "/cables" },
-  { name: "Drums", image: drumsImage, link: "/drums" },
-  { name: "Accessories", image: accessoriesImage, link: "/accessories" },
-  { name: "Recordings", image: recordingsImage, link: "/recordings" },
-]; */
+  { name: "Keys", image: keys, link: "/keys" },
+  { name: "Pedals", image: pedal, link: "/pedals" },
+  { name: "Amps", image: amp, link: "/amps" },
+  { name: "Accesories", image: cables, link: "/cables" },
+  { name: "Drums", image: drums, link: "/drums" },
+  { name: "Headphones", image: headphones, link: "/headphones" },
+];
 
 export const Home = () => {
   return (
-    <div className="px-6 mt-[30%] sm:mt-[10%]">
-      <GridItems />
+    <div className="px-6" id="home">
+      {/*   <GridItems /> */}
       <Featured />
       <Brands />
       <ProductCarousel />
@@ -99,14 +106,20 @@ export const Home = () => {
 const GridItems = () => {
   return (
     <div className="grid grid-cols-5 grid-rows-5 gap-4">
-   {/*    {categories.map((category, index) => (
+      {categories.map((category, index) => (
         <div key={index} className="relative overflow-hidden">
-          <img src={category.image} alt={category.name} className="w-full h-full object-cover" />
+          <img
+            src={category.image}
+            alt={category.name}
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 hover:bg-opacity-70 transition-opacity">
-            <a href={category.link} className="text-white font-bold text-lg">{category.name}</a>
+            <a href={category.link} className="text-white font-bold text-lg">
+              {category.name}
+            </a>
           </div>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 };

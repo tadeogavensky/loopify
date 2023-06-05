@@ -20,13 +20,13 @@ export const Card = (props) => {
   const stock = true;
   return (
     <>
-      <div className="flex flex-col items-center sm:w-full bg-white rounded-md w-[85%] shadow-md pb-4 mb-4 px-[1rem] content-none cursor-default ">
+      <div className="flex flex-col items-center sm:w-full bg-white rounded-md w-full shadow-md pb-4 mb-4 px-[1rem] content-none cursor-default ">
         <div className="h-[16rem] sm:h-[10rem] pt-2 relative text-center box-content">
           <Link to={`/product/${props.product.id}`}>
             <img
               src={props.product.image}
               alt={props.product.name}
-              className="h-full "
+              className="h-full object-cover"
             />
           </Link>
         </div>

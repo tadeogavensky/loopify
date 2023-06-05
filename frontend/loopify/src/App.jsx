@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Navbar } from "./components/Navbar";
+/* import { Navbar } from "./components/Navbar"; */
 import { Home } from "./components/Home";
 import { Login } from "./components/Login";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Registration } from "./components/Registration";
 import { BasketProvider } from "./components/BasketContext";
+import Navigation from "./components/Navigation";
 function App() {
   const [basket, setBasket] = useState([]);
   return (
@@ -12,7 +13,7 @@ function App() {
       <Router>
         <BasketProvider>
           <div className="worksans-regular">
-            <Navbar />
+            <Navigation />
             <div className="">
               <Routes>
                 <Route path="/" element={<Home />} />

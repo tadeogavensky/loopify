@@ -48,7 +48,7 @@ export const Navbar = () => {
   return (
     <div
       id="navbar"
-      className="fixed top-0 left-0 right-0 z-50 flex flex-col bg-[#252525] py-8 sm:py-6 space-y-6"
+      className="flex flex-col bg-[#252525] py-8 sm:py-6 space-y-6  fixed top-0 left-0 right-0 50"
     >
       <nav className="flex flex-row sm:justify-around justify-between items-center flex-wrap">
         <button className="text-white md:hidden ml-8" onClick={toggle}>
@@ -143,14 +143,6 @@ export const Navbar = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} className="text-[26px]" />
           </button>
         </form>
-
-        {showSidebar && (
-          <BurgerMenu
-            userLogged={userLogged}
-            showSidebar={showSidebar}
-            closeSidebar={closeSidebar}
-          />
-        )}
       </nav>
       <SubHeader />
     </div>
@@ -159,7 +151,7 @@ export const Navbar = () => {
 const BurgerMenu = ({ userLogged, showSidebar, closeSidebar }) => {
   return (
     <div
-      className={`relative z-40 
+      className={`relative 40 
         w-full
       h-screen items-start flex md:hidden `}
     >

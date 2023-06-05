@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Login = () => {
   return (
-    <div className="mt-[40%] sm:mt-[10%] md:mt-[10%]">
+    <div className="">
       <div className="flex  flex-col  bg-white justify-around">
         <div className="flex min-h-full flex-1 flex-col items-center px-6 py-12 lg:px-8">
           <Link to={"/"}>
