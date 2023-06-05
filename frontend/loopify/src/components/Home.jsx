@@ -26,14 +26,16 @@ import amex from "../assets/images/payments/amex.svg";
 
 import { Card } from "./Card";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Controller } from "swiper";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
 import "swiper/css";
 
 import { OrangeBorder } from "./OrangeBorder";
 import { Footer } from "./Footer";
 
 import swiperConfig from "../utils/swiperConfig";
+
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 const paymentImages = [visa, amex, applepay, googlepay];
 
@@ -69,6 +71,7 @@ import keys from "../assets/images/categories/keys.jpg";
 import pedal from "../assets/images/categories/pedal.jpg";
 import cables from "../assets/images/categories/cables.jpg";
 import headphones from "../assets/images/categories/headphones.jpg";
+import { SwiperNavButtons } from "../utils/SwiperNavButtons";
 
 const categories = [
   {
@@ -91,7 +94,7 @@ const categories = [
 
 export const Home = () => {
   return (
-    <div className="px-6" id="home">
+    <div className="px-6">
       {/*   <GridItems /> */}
       <Featured />
       <Brands />
@@ -133,7 +136,7 @@ const Brands = () => {
           Associated Brands
         </h1>
       </div>
-      <Swiper {...swiperConfig}>
+      <Swiper {...swiperConfig} modules={[Autoplay]}>
         {brands.map((brand, index) => {
           return (
             <SwiperSlide key={index}>
@@ -192,13 +195,20 @@ const ProductCarousel = () => {
   ];
   return (
     <>
-      <div className="mb-12">
+      <div className="mb-12 relative">
         <div className="flex flex-col items-center my-8">
           <OrangeBorder />
           <h1 className="worksans-bold text-center text-2xl">New Products</h1>
         </div>
-        <div>
-          <Swiper {...swiperConfig}>
+        <div className="relative">
+          <Swiper
+            {...swiperConfig}
+            modules={[Pagination, Navigation]}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+          >
             {latestProducts.map((product, index) => {
               return (
                 <SwiperSlide key={index}>
@@ -206,7 +216,15 @@ const ProductCarousel = () => {
                 </SwiperSlide>
               );
             })}
+            <div className="hidden lg:flex justify-end">
+              <SwiperNavButtons />
+            </div>
           </Swiper>
+          <div className="absolute right-16 -top-8 transform -translate-y-1/2 pr-4 hidden md:block">
+            <div className="text-white bg-[#FF753A] px-3 py-1 rounded-full swipe-text">
+              Swipe <DoubleArrowIcon />
+            </div>
+          </div>
         </div>
       </div>
     </>

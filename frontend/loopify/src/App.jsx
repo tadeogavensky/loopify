@@ -14,7 +14,7 @@ function App() {
         <BasketProvider>
           <div className="worksans-regular">
             <Navigation />
-            <div className="">
+            <div className="" id="home">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />

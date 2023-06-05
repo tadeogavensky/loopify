@@ -7,11 +7,19 @@ interface SwiperConfig {
       spaceBetween: number;
     };
   };
+  autoplay: {
+    delay: number;
+    disableOnInteraction: boolean;
+  };
 }
 
 const swiperConfig: SwiperConfig = {
   spaceBetween: 30,
   slidesPerView: 5,
+  autoplay: {
+    delay: 2000, // Adjust the delay according to your preference (in milliseconds)
+    disableOnInteraction: false, // Allow autoplay to continue even on user interaction
+  },
   breakpoints: {
     0: {
       slidesPerView: 1,
@@ -35,6 +43,5 @@ const swiperConfig: SwiperConfig = {
     },
   },
 };
-
 
 export default swiperConfig;

@@ -2,6 +2,10 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
+import { GoogleLogin } from "@react-oauth/google";
+
+import jwt_decode from "jwt-decode";
+
 export const Login = () => {
   return (
     <div className="">
@@ -48,6 +52,37 @@ export const Login = () => {
                 Sign in
               </button>
             </form>
+
+            <div className="flex flex-col md:flex-row items-center justify-center mt-8 gap-4 w-full">
+              <p>Or sign in with Google</p>
+              <div className="md:block hidden">
+                <GoogleLogin
+                  /*   onSuccess={showUserInformation} */
+                  onError={() => {
+                    console.log("Login Failed");
+                  }}
+                  shape="pill"
+                  size="large"
+                  logo_alignment="left"
+                  text="signin_with"
+                  type="icon"
+                />
+              </div>
+              <div className="md:hidden block ">
+                <GoogleLogin
+                  /*   onSuccess={showUserInformation} */
+                  onError={() => {
+                    console.log("Login Failed");
+                  }}
+                  shape="pill"
+                  size="large"
+                  logo_alignment="left"
+                  text="signin_with"
+                  type="standard"
+                />
+              </div>
+            </div>
+
             <div className="flex items-center justify-center mt-10 text-sm flex-wrap ">
               <p className="text-gray-500 mr-2">Not a member?</p>
               <Link

@@ -19,6 +19,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { Link } from "react-router-dom";
 
@@ -26,6 +27,7 @@ const Navigation = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [userLogged, setUserLogged] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [cartItems, setCartItems] = useState(0); // To be an object with, array of products, qty of items, price, state of cart, etc
 
   const openSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -92,7 +94,6 @@ const Navigation = () => {
               </h1>
             </Link>
             <Link className="font-bold link-item ">Guitars</Link>
-            <Link className="font-bold link-item ">Pedals</Link>
             <Link className="font-bold link-item ">Gear & Accessories</Link>
             <Link className="font-bold link-item ">Lessons</Link>
             <Link className="font-bold link-item ">This Is Loopify</Link>
@@ -132,11 +133,11 @@ const Navigation = () => {
               )}
               {userMenuOpen && (
                 <div
-                  className="flex flex-col bg-white shadow-md w-[150px] absolute top-full -right-12 "
+                  className="flex flex-col bg-white shadow-md w-[150px] absolute top-full -right-12 z-90 "
                   onMouseEnter={openUserMenu}
                   onMouseLeave={closeUserMenu}
                 >
-                  <button className="w-full hover:bg-gray-300 p-2 ">
+                  <button className="w-full hover:bg-gray-300 p-2">
                     <Link to={"/login"}> Sign In</Link>
                   </button>
                   <button className="w-full hover:bg-gray-300 p-2">
@@ -145,6 +146,13 @@ const Navigation = () => {
                 </div>
               )}
             </div>
+
+            <button className="relative">
+              <ShoppingCartOutlinedIcon />
+              <div className="absolute bottom-4 left-6 flex items-center justify-center bg-[#FF753A] rounded-full px-1">
+                <p className=" text-white text-xs">{cartItems}</p>
+              </div>
+            </button>
           </div>
         </div>
 
@@ -164,6 +172,13 @@ const Navigation = () => {
               <span className="text-[#FF753A]">fy</span>
             </h1>
           </Link>
+
+          <button className="relative lg:hidden mr-2">
+            <ShoppingCartOutlinedIcon />
+            <div className="absolute bottom-4 left-6 flex items-center justify-center bg-[#FF753A] rounded-full px-1">
+              <p className=" text-white text-xs">{cartItems}</p>
+            </div>
+          </button>
         </div>
       </div>
 
@@ -189,36 +204,54 @@ const Navigation = () => {
           </form>
 
           <div className="flex flex-col gap-6 text-black mx-6 mt-3">
-            <Link className="flex items-center justify-between gap-5 text-[16px] font-bold">
-              <p>Home</p>
-              <ArrowRightIcon />
-            </Link>
-            <Link className="flex items-center justify-between gap-5 text-[16px] font-bold">
+            <Link
+              className="flex items-center justify-between gap-5 text-[16px] font-bold"
+              onClick={closeSidebar}
+            >
               <p>Guitars</p>
               <ArrowRightIcon />
             </Link>
-            <Link className="flex items-center justify-between gap-5 text-[16px] font-bold">
+            <Link
+              className="flex items-center justify-between gap-5 text-[16px] font-bold"
+              onClick={closeSidebar}
+            >
               <p>Pedals</p>
               <ArrowRightIcon />
             </Link>
-            <Link className="flex items-center justify-between gap-5 text-[16px] font-bold">
-              <p>Accesories</p>
+            <Link
+              className="flex items-center justify-between gap-5 text-[16px] font-bold"
+              onClick={closeSidebar}
+            >
+              <p>Gear & Accesories</p>
               <ArrowRightIcon />
             </Link>
-            <Link className="flex items-center justify-between gap-5 text-[16px] font-bold">
+            <Link
+              className="flex items-center justify-between gap-5 text-[16px] font-bold"
+              onClick={closeSidebar}
+            >
               <p>Vinyls</p>
               <ArrowRightIcon />
             </Link>
-            <Link className="flex items-center justify-between gap-5 text-[16px] font-bold">
+            <Link
+              className="flex items-center justify-between gap-5 text-[16px] font-bold"
+              onClick={closeSidebar}
+            >
               <p>Lessons</p>
               <ArrowRightIcon />
             </Link>
-            <Link className="flex items-center justify-between gap-5 text-[16px] font-bold">
+            <Link
+              className="flex items-center justify-between gap-5 text-[16px] font-bold"
+              onClick={closeSidebar}
+            >
               <p>About Us</p>
               <ArrowRightIcon />
             </Link>
 
-            <Link className="flex items-center justify-between gap-5 text-[16px] font-bold">
+            <Link
+              className="flex items-center justify-between gap-5 text-[16px] font-bold"
+              to={"/login"}
+              onClick={closeSidebar}
+            >
               <p>Sign In</p>
             </Link>
           </div>
