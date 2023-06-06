@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import "../src/styles/extra.css";
+import "../src/styles/swiperStyles.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const clientId =

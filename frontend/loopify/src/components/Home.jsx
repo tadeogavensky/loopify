@@ -27,8 +27,16 @@ import amex from "../assets/images/payments/amex.svg";
 import { Card } from "./Card";
 
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectCube,
+  Autoplay,
+} from "swiper";
 import "swiper/css";
+import "swiper/swiper-bundle.min.css";
 
 import { OrangeBorder } from "./OrangeBorder";
 import { Footer } from "./Footer";
@@ -136,7 +144,12 @@ const Brands = () => {
           Associated Brands
         </h1>
       </div>
-      <Swiper {...swiperConfig} modules={[Autoplay]}>
+      <Swiper
+        {...swiperConfig}
+        modules={[Autoplay, Navigation, Pagination]}
+        navigation
+        pagination={{ clickable: true }}
+      >
         {brands.map((brand, index) => {
           return (
             <SwiperSlide key={index}>
@@ -193,6 +206,7 @@ const ProductCarousel = () => {
     product,
     product,
   ];
+  const swiper = useSwiper();
   return (
     <>
       <div className="mb-12 relative">
@@ -203,11 +217,9 @@ const ProductCarousel = () => {
         <div className="relative">
           <Swiper
             {...swiperConfig}
-            modules={[Pagination, Navigation]}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
+            modules={[Navigation, Pagination]}
+            navigation
+            pagination={{ clickable: true }}
           >
             {latestProducts.map((product, index) => {
               return (
@@ -216,15 +228,7 @@ const ProductCarousel = () => {
                 </SwiperSlide>
               );
             })}
-            <div className="hidden lg:flex justify-end">
-              <SwiperNavButtons />
-            </div>
           </Swiper>
-          <div className="absolute right-16 -top-8 transform -translate-y-1/2 pr-4 hidden md:block">
-            <div className="text-white bg-[#FF753A] px-3 py-1 rounded-full swipe-text">
-              Swipe <DoubleArrowIcon />
-            </div>
-          </div>
         </div>
       </div>
     </>

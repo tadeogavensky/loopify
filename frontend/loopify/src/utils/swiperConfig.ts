@@ -1,3 +1,4 @@
+
 interface SwiperConfig {
   spaceBetween: number;
   slidesPerView: number;
@@ -15,7 +16,7 @@ interface SwiperConfig {
 
 const swiperConfig: SwiperConfig = {
   spaceBetween: 30,
-  slidesPerView: 5,
+  slidesPerView: 4,
   autoplay: {
     delay: 2000, // Adjust the delay according to your preference (in milliseconds)
     disableOnInteraction: false, // Allow autoplay to continue even on user interaction
